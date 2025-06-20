@@ -1,6 +1,5 @@
 # 데이터베이스 2025
 
-https://nano5.notion.site/Spring-Data-JPA-MySQL-1abdaf211d42817581b9e3dd2ed9d21f?pvs=4
 
 ```mermaid
 erDiagram
