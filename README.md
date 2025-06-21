@@ -7,15 +7,15 @@ erDiagram
     Car ||--o{ RecentSearch : "검색"
 
     Manufacturer {
-        BIGINT manufacturer_id PK "제조사 ID"
+        INT manufacturer_id PK "제조사 ID"
         VARCHAR name "제조사명"
         VARCHAR country "국가"
     }
 
     Car {
-        BIGINT car_id PK "자동차 ID"
+        INT car_id PK "자동차 ID"
         VARCHAR name "모델명"
-        BIGINT manufacturer_id FK "제조사 ID"
+        INT manufacturer_id FK "제조사 ID"
         INT release_year "출시 연도"
         INT price_min "최소 가격"
         INT price_max "최대 가격"
@@ -27,8 +27,8 @@ erDiagram
     }
 
     RecentSearch {
-        BIGINT search_id PK "검색 ID"
-        BIGINT user_id "사용자 ID"
-        BIGINT car_id FK "자동차 ID"
+        INT search_id PK "검색 ID"
+        INT user_id "사용자 ID"
+        INT car_id FK "자동차 ID"
         DATETIME searched_at "검색 시각"
     }
