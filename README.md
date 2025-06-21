@@ -3,32 +3,44 @@
 
 ```mermaid
 erDiagram
-    Manufacturer ||--o{ Car : "제조"
-    Car ||--o{ RecentSearch : "검색"
-
-    Manufacturer {
-        INT manufacturer_id PK "제조사 ID"
-        VARCHAR name "제조사명"
-        VARCHAR country "국가"
-    }
-
     Car {
-        INT car_id PK "자동차 ID"
-        VARCHAR name "모델명"
-        INT manufacturer_id FK "제조사 ID"
-        INT release_year "출시 연도"
-        INT price_min "최소 가격"
-        INT price_max "최대 가격"
-        ENUM fuel_type "연료 종류"
-        ENUM car_size "차종"
-        BOOL heated_seat "열선 시트"
-        BOOL cooling_seat "통풍 시트"
-        BOOL auto_drive "자율 주행"
+        INT car_id PK
+        VARCHAR name
+        INT release_year
+        VARCHAR manufacturer_name
+        VARCHAR manufacturer_country
+        INT price_min
+        INT price_max
+        VARCHAR fuel_type
+        VARCHAR car_size
+        TINYINT heated_seat
+        TINYINT cooling_seat
+        TINYINT auto_drive
     }
 
-    RecentSearch {
-        INT search_id PK "검색 ID"
-        INT user_id "사용자 ID"
-        INT car_id FK "자동차 ID"
-        DATETIME searched_at "검색 시각"
+    UsedCar {
+        INT used_car_id PK
+        VARCHAR car_model_name
+        VARCHAR manufacturer_name
+        VARCHAR manufacturer_country
+        INT year
+        INT mileage
+        INT price
+        VARCHAR used_condition
+        VARCHAR fuel_type
+        VARCHAR car_size
+        TINYINT heated_seat
+        TINYINT cooling_seat
+        TINYINT auto_drive
     }
+
+    Comparison {
+        INT comparison_id PK
+        INT user_id
+        INT car_id FK
+        INT used_car_id FK
+        DATETIME compared_at
+    }
+
+    Comparison }o--|| Car : "compares new car"
+    Comparison }o--|| UsedCar : "compares used car"
